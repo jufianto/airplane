@@ -1,4 +1,5 @@
 import 'package:airplane/shared/theme.dart';
+import 'package:airplane/ui/widgets/custom_button.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -127,28 +128,11 @@ class BonusSaldo extends StatelessWidget {
     }
 
     Widget buttonSubmit() {
-      return Container(
+      return CustomButton(
+        titles: "Start Fly Now ",
+        routes: '/main',
         width: 220,
-        height: 55,
         margin: EdgeInsets.only(top: 50),
-        child: TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/main');
-          },
-          style: TextButton.styleFrom(
-            backgroundColor: kPrimaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(defaultBorderRadius),
-            ),
-          ),
-          child: Text(
-            "Start Fly Now",
-            style: whiteTextStyle.copyWith(
-              fontSize: 18,
-              fontWeight: medium,
-            ),
-          ),
-        ),
       );
     }
 

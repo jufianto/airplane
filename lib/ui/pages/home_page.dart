@@ -1,4 +1,6 @@
 import 'package:airplane/shared/theme.dart';
+import 'package:airplane/ui/widgets/destination_card.dart';
+import 'package:airplane/ui/widgets/new_destination.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,116 +8,99 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget customButtonNavigation() {
-      return Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
-          margin: EdgeInsets.only(
-            left: 24,
-            right: 24,
-            bottom: 30,
-            top: 50,
-          ),
-          width: double.infinity,
-          height: 60,
-          decoration: BoxDecoration(
-            color: kWhiteColor,
-            borderRadius: BorderRadius.circular(defaultBorderRadius),
-          ),
+    Widget headerPage() {
+      return Container(
+        margin: EdgeInsets.only(
+          left: defaultMargin,
+          right: defaultMargin,
+          top: 30,
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Howdy, \nKezia Anne",
+                    style: blackTextStyle.copyWith(
+                      fontSize: 24,
+                      fontWeight: semiBold,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  Text(
+                    "where to fly today",
+                    style: greyTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: light,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/pic.png"),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget popularDestination() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: 30,
+        ),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // ignore: prefer_const_literals_to_create_immutables
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(),
-                  Container(
-                    width: 24,
-                    height: 24,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/menu1.png'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 30,
-                    height: 2,
-                    decoration: BoxDecoration(
-                      color: kPrimaryColor,
-                      borderRadius: BorderRadius.circular(defaultBorderRadius),
-                    ),
-                  ),
-                ],
+              DestonationCard(
+                imgUrl: "assets/item_featured1.png",
+                city: "Pekanbaru",
+                title: "Sungai Siak",
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(),
-                  Container(
-                    width: 24,
-                    height: 24,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/menu2.png'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 30,
-                    height: 2,
-                    decoration: BoxDecoration(
-                      color: kTransparentColor,
-                      borderRadius: BorderRadius.circular(defaultBorderRadius),
-                    ),
-                  ),
-                ],
+              DestonationCard(
+                imgUrl: "assets/item_featured1.png",
+                city: "Pekanbaru",
+                title: "Sungai Siak",
+                rating: 4.0,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(),
-                  Container(
-                    width: 24,
-                    height: 24,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/menu3.png'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 30,
-                    height: 2,
-                    decoration: BoxDecoration(
-                      color: kTransparentColor,
-                      borderRadius: BorderRadius.circular(defaultBorderRadius),
-                    ),
-                  ),
-                ],
+              DestonationCard(
+                imgUrl: "assets/item_featured1.png",
+                city: "Pekanbaru",
+                title: "Sungai Siak",
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(),
-                  Container(
-                    width: 24,
-                    height: 24,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/menu4.png'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 30,
-                    height: 2,
-                    decoration: BoxDecoration(
-                      color: kTransparentColor,
-                      borderRadius: BorderRadius.circular(defaultBorderRadius),
-                    ),
-                  ),
-                ],
+              DestonationCard(
+                imgUrl: "assets/item_featured1.png",
+                city: "Pekanbaru",
+                title: "Sungai Siak",
+              ),
+              DestonationCard(
+                imgUrl: "assets/item_featured1.png",
+                city: "Pekanbaru",
+                title: "Sungai Siak",
+              ),
+              DestonationCard(
+                imgUrl: "assets/item_featured1.png",
+                city: "Pekanbaru",
+                title: "Sungai Siak",
+              ),
+              DestonationCard(
+                imgUrl: "assets/item_featured1.png",
+                city: "Pekanbaru",
+                title: "Sungai Siak",
               ),
             ],
           ),
@@ -123,14 +108,42 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget newDestination() {
+      return Container(
+        margin: EdgeInsets.only(
+          left: defaultMargin,
+          right: defaultMargin,
+          top: 30,
+          bottom: 140,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "New This Year",
+              style: blackTextStyle.copyWith(
+                fontSize: 18,
+                fontWeight: semiBold,
+              ),
+            ),
+            DestinationCard(),
+            DestinationCard(),
+            DestinationCard(),
+            DestinationCard(),
+            DestinationCard(),
+            DestinationCard(),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      body: Stack(
+      body: ListView(
         children: [
-          Text(
-            "Hello",
-          ),
-          customButtonNavigation(),
+          headerPage(),
+          popularDestination(),
+          newDestination(),
         ],
       ),
     );
